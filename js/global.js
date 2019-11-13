@@ -77,10 +77,7 @@ window.onload = (event) => {
     $('.download-pdf').click(function () {
 
         var petitioner = getPetitioner();
-        var doc = new jsPDF();
-        doc.setFontSize(9);
-        doc.text(hbDocPrint(petitioner), 10, 20);
-        doc.save(petitioner.firstName +'-Petition.pdf');
+        hbDocPrint(petitioner);
         console.log('Success');
     });
 
@@ -150,15 +147,23 @@ function hbDocPrintTest(petitioner){
 }
 
 function hbDocPrint(petitioner){
-    var docText =
-    `IN THE DISTRICT COURT OF ${petitioner.county} COUNTY
-STATE OF OKLAHOMA
+    // source file: http://webserver1.lsb.state.ok.us/cf_pdf/2019-20%20COMMITTEE%20REPORTS/House/CCR%20Combined/HB1269%20CCR.PDF
+    var doc = new jsPDF();
 
- Case No. __${petitioner.caseNo}_____  ___________________
-___________________,
+    doc.setFontSize(9);
+    doc.setFont("courier");
+    doc.setFontStyle("normal");
+    doc.text('IN THE DISTRICT COURT OF ${petitioner.county} COUNTY', 60, 25);
 
-Petitioner,
+    doc.text('STATE OF OKLAHOMA',75,30);
 
+
+    doc.text('_${petitioner.lastName}, ${petitioner.firstName} ${petitioner.middleName}_,', 20, 40);
+    doc.text('(Last name) (First name) (Middle name)', 20, 45);
+/*
+    Petitioner,
+
+    Case No. _${petitioner.caseNo}_
 vs.
 THE STATE OF OKLAHOMA,
 
@@ -171,8 +176,6 @@ pursuant to paragraph 15 of subsection A of Section 18 and Section 19 of Title 2
 
 PETITIONER INFORMATION:
 
-${petitioner.lastName}, ${petitioner.firstName} ${petitioner.middleName}
- (Last name) (First name) (Middle name)
 
 ${petitioner.street1}
 ${petitioner.street2}
@@ -237,6 +240,7 @@ information and belief.
 ________________________________________________
 Date Signature of Petitioner Name
 (Print): ${petitioner.firstName} ${petitioner.middleName} ${petitioner.lastName}
-`;
-return docText;
+`;*/
+// return docText;
+    doc.save(petitioner.firstName +'-Petition.pdf');
 }
