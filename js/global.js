@@ -153,27 +153,32 @@ function hbDocPrint(petitioner){
     doc.setFontSize(9);
     doc.setFont("courier");
     doc.setFontStyle("normal");
-    doc.text('IN THE DISTRICT COURT OF ${petitioner.county} COUNTY', 60, 25);
+    doc.text(`IN THE DISTRICT COURT OF ${petitioner.county} COUNTY`, 70, 25);
 
-    doc.text('STATE OF OKLAHOMA',75,30);
+    doc.text(`STATE OF OKLAHOMA`,85,30);
 
 
-    doc.text('_${petitioner.lastName}, ${petitioner.firstName} ${petitioner.middleName}_,', 20, 40);
-    doc.text('(Last name) (First name) (Middle name)', 20, 45);
+    doc.text(`${petitioner.lastName}, ${petitioner.firstName} ${petitioner.middleName},`, 20, 40);
+    doc.text(`________________________________________________`, 20, 41);
+    doc.text(`(Last name) (First name) (Middle name)`, 20, 45);
+
+    doc.text(`Petitioner,`, 30, 50);
+
+    doc.text(`Case No. ${petitioner.caseNo}`, 80, 55);
+    doc.text(`_____________________________`, 95, 56);
+
+    doc.text(`vs.`, 20, 70);
+    doc.text(`THE STATE OF OKLAHOMA,`, 20, 75);
+
+    doc.text(`Respondent.`, 20, 80);
+
+    doc.text(`PETITION TO EXPUNGE RECORDS`, 75, 85);
+    doc.text(`PURSUANT TO TITLE 22 O.S. SECTIONS 18 AND 19`, 60, 90);
+
+    doc.text(`COMES NOW, the Petitioner and respectfully moves this Court to expunge the criminal`, 20, 100);
+    doc.text(`history records of the Petitioner pursuant to paragraph 15 of subsection A of`, 20, 105);
+    doc.text(`Section 18 and Section 19 of Title 22 of the Oklahoma Statutes.`, 20, 100);
 /*
-    Petitioner,
-
-    Case No. _${petitioner.caseNo}_
-vs.
-THE STATE OF OKLAHOMA,
-
-Respondent.
-
-PETITION TO EXPUNGE RECORDS PURSUANT TO TITLE 22 O.S. SECTIONS 18 AND 19
-
-COMES NOW, the Petitioner and respectfully moves this Court to expunge the criminal history records of the Petitioner
-pursuant to paragraph 15 of subsection A of Section 18 and Section 19 of Title 22 of the Oklahoma Statutes.
-
 PETITIONER INFORMATION:
 
 
